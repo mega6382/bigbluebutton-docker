@@ -259,14 +259,7 @@ class AudioSettings extends React.Component {
       <Styled.Row>
         <Styled.SpacedLeftCol>
           <Styled.LabelSmall htmlFor="audioTest">
-            {!withEcho
-              ? <AudioTestContainer id="audioTest" />
-              : (
-                <LocalEchoContainer
-                  intl={intl}
-                  stream={stream}
-                />
-              )}
+            <AudioTestContainer id="audioTest" />
           </Styled.LabelSmall>
         </Styled.SpacedLeftCol>
       </Styled.Row>
