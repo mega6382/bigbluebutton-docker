@@ -5,7 +5,7 @@ FROM gitlab.senfcall.de:5050/senfcall-public/docker-bbb-build:$BBB_BUILD_TAG AS 
 # USER meteor
 
 ARG TAG_HTML5
-COPY ./bigbluebutton-html /source
+COPY ./bigbluebutton-html5 /source
 RUN cd /source \
     && meteor npm ci --production \
     && METEOR_DISABLE_OPTIMISTIC_CACHING=1 meteor build --architecture os.linux.x86_64 --allow-superuser  --directory /app \
