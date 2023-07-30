@@ -4,8 +4,8 @@ FROM gitlab.senfcall.de:5050/senfcall-public/docker-bbb-build:$BBB_BUILD_TAG AS 
 ARG TAG_COMMON_MESSAGE
 
 # download bbb-common-message
-RUN svn checkout https://github.com/bigbluebutton/bigbluebutton/tags/$TAG_COMMON_MESSAGE/bbb-common-message /bbb-common-message \
-    && cd /bbb-common-message \
+COPY ./bbb-common-message /bbb-common-message
+RUN cd /bbb-common-message \
     && ./deploy.sh \
     && rm -rf /bbb-common-message
 
@@ -14,16 +14,16 @@ RUN svn checkout https://github.com/bigbluebutton/bigbluebutton/tags/$TAG_COMMON
 ARG TAG_BBB_WEB
 
 # download bbb-common-web
-RUN svn checkout https://github.com/bigbluebutton/bigbluebutton/tags/$TAG_BBB_WEB/bbb-common-web /bbb-common-web \
-    && rm -rf /bbb-common-message/.svn
+COPY ./bbb-common-web /bbb-common-web
+RUN rm -rf /bbb-common-web/.svn
 
 # compile bbb-common-web
 RUN cd /bbb-common-web \
  && ./deploy.sh
 
 # download bbb-web
-RUN svn checkout https://github.com/bigbluebutton/bigbluebutton/tags/$TAG_BBB_WEB/bigbluebutton-web /bbb-web \
-    && rm -rf /bbb-web/.svn
+COPY ./bbb-web /bbb-web
+RUN rm -rf /bbb-web/.svn
 
 # compile bbb-web
 RUN cd /bbb-web && grails assemble

@@ -4,8 +4,8 @@ FROM gitlab.senfcall.de:5050/senfcall-public/docker-bbb-build:$BBB_BUILD_TAG AS 
 ARG TAG_COMMON_MESSAGE
 
 # download bbb-common-message
-RUN svn checkout https://github.com/bigbluebutton/bigbluebutton/tags/$TAG_COMMON_MESSAGE/bbb-common-message /bbb-common-message \
-    && cd /bbb-common-message \
+COPY ./bbb-common-message /bbb-common-message
+RUN cd /bbb-common-message \
     && ./deploy.sh \
     && rm -rf /bbb-common-message
 
@@ -13,8 +13,8 @@ RUN svn checkout https://github.com/bigbluebutton/bigbluebutton/tags/$TAG_COMMON
 
 ARG TAG_APPS_AKKA
 
-RUN svn checkout https://github.com/bigbluebutton/bigbluebutton/tags/$TAG_APPS_AKKA/akka-bbb-apps /source \
-    && rm -rf /source/.svn
+COPY ./akka-bbb-apps /source
+RUN rm -rf /source/.svn
 
 # compile and unzip bin
 RUN cd /source \
