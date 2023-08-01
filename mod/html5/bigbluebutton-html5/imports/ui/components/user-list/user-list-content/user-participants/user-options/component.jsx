@@ -249,14 +249,14 @@ class UserOptions extends PureComponent {
           });
         }
 
-        this.menuItems.push({
-          key: this.lockId,
-          label: intl.formatMessage(intlMessages.lockViewersLabel),
-          description: intl.formatMessage(intlMessages.lockViewersDesc),
-          onClick: () => mountModal(<LockViewersContainer />),
-          icon: 'lock',
-          dataTest: 'lockViewersButton',
-        });
+        // this.menuItems.push({
+        //   key: this.lockId,
+        //   label: intl.formatMessage(intlMessages.lockViewersLabel),
+        //   description: intl.formatMessage(intlMessages.lockViewersDesc),
+        //   onClick: () => mountModal(<LockViewersContainer />),
+        //   icon: 'lock',
+        //   dataTest: 'lockViewersButton',
+        // });
 
         if (dynamicGuestPolicy) {
           this.menuItems.push({
@@ -271,58 +271,58 @@ class UserOptions extends PureComponent {
       }
 
       if (amIModerator) {
-        this.menuItems.push({
-          key: this.saveUsersNameId,
-          label: intl.formatMessage(intlMessages.saveUserNames),
-          // description: ,
-          onClick: this.onSaveUserNames,
-          icon: 'download',
-          dataTest: 'downloadUserNamesList',
-        });
+        // this.menuItems.push({
+        //   key: this.saveUsersNameId,
+        //   label: intl.formatMessage(intlMessages.saveUserNames),
+        //   // description: ,
+        //   onClick: this.onSaveUserNames,
+        //   icon: 'download',
+        //   dataTest: 'downloadUserNamesList',
+        // });
       }
 
-      this.menuItems.push({
-        key: this.clearStatusId,
-        label: intl.formatMessage(intlMessages.clearAllLabel),
-        description: intl.formatMessage(intlMessages.clearAllDesc),
-        onClick: toggleStatus,
-        icon: 'clear_status',
-        divider: true,
-      });
+      // this.menuItems.push({
+      //   key: this.clearStatusId,
+      //   label: intl.formatMessage(intlMessages.clearAllLabel),
+      //   description: intl.formatMessage(intlMessages.clearAllDesc),
+      //   onClick: toggleStatus,
+      //   icon: 'clear_status',
+      //   divider: true,
+      // });
 
-      if (canCreateBreakout) {
-        this.menuItems.push({
-          key: this.createBreakoutId,
-          icon: 'rooms',
-          label: intl.formatMessage(intlMessages.createBreakoutRoom),
-          description: intl.formatMessage(intlMessages.createBreakoutRoomDesc),
-          onClick: this.onCreateBreakouts,
-          dataTest: 'createBreakoutRooms',
-        });
-      }
+      // if (canCreateBreakout) {
+      //   this.menuItems.push({
+      //     key: this.createBreakoutId,
+      //     icon: 'rooms',
+      //     label: intl.formatMessage(intlMessages.createBreakoutRoom),
+      //     description: intl.formatMessage(intlMessages.createBreakoutRoomDesc),
+      //     onClick: this.onCreateBreakouts,
+      //     dataTest: 'createBreakoutRooms',
+      //   });
+      // }
 
       if (amIModerator && CaptionsService.isCaptionsEnabled()) {
-        this.menuItems.push({
-          icon: 'closed_caption',
-          label: intl.formatMessage(intlMessages.captionsLabel),
-          description: intl.formatMessage(intlMessages.captionsDesc),
-          key: this.captionsId,
-          onClick: this.handleCaptionsClick,
-          dataTest: 'writeClosedCaptions',
-        });
+        // this.menuItems.push({
+        //   icon: 'closed_caption',
+        //   label: intl.formatMessage(intlMessages.captionsLabel),
+        //   description: intl.formatMessage(intlMessages.captionsDesc),
+        //   key: this.captionsId,
+        //   onClick: this.handleCaptionsClick,
+        //   dataTest: 'writeClosedCaptions',
+        // });
       }
       if (amIModerator) {
         if (isLearningDashboardEnabled()) {
-          this.menuItems.push({
-            icon: 'multi_whiteboard',
-            iconRight: 'popout_window',
-            label: intl.formatMessage(intlMessages.learningDashboardLabel),
-            description: `${intl.formatMessage(intlMessages.learningDashboardDesc)} ${intl.formatMessage(intlMessages.newTab)}`,
-            key: this.learningDashboardId,
-            onClick: () => { openLearningDashboardUrl(locale); },
-            dividerTop: true,
-            dataTest: 'learningDashboard'
-          });
+          // this.menuItems.push({
+          //   icon: 'multi_whiteboard',
+          //   iconRight: 'popout_window',
+          //   label: intl.formatMessage(intlMessages.learningDashboardLabel),
+          //   description: `${intl.formatMessage(intlMessages.learningDashboardDesc)} ${intl.formatMessage(intlMessages.newTab)}`,
+          //   key: this.learningDashboardId,
+          //   onClick: () => { openLearningDashboardUrl(locale); },
+          //   dividerTop: true,
+          //   dataTest: 'learningDashboard'
+          // });
         }
       }
     }

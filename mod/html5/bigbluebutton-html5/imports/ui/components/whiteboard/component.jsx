@@ -22,7 +22,6 @@ const SMALL_WIDTH = 800;
 const SMALLEST_WIDTH = 645;
 const TOOLBAR_SMALL = 28;
 const TOOLBAR_LARGE = 38;
-
 export default function Whiteboard(props) {
   const {
     isPresenter,
@@ -586,6 +585,7 @@ export default function Whiteboard(props) {
   const onMount = (app) => {
     const menu = document.getElementById('TD-Styles')?.parentElement;
     setSafeCurrentTool('select');
+    app.removeShapes();
 
     const canvas = document.getElementById('canvas');
     if (canvas) {

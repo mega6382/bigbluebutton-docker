@@ -201,34 +201,34 @@ class ActionsDropdown extends PureComponent {
     }
 
     if (amIPresenter && allowExternalVideo) {
-      actions.push({
-        icon: !isSharingVideo ? "external-video" : "external-video_off",
-        label: !isSharingVideo ? intl.formatMessage(intlMessages.startExternalVideoLabel)
-          : intl.formatMessage(intlMessages.stopExternalVideoLabel),
-        key: "external-video",
-        onClick: isSharingVideo ? stopExternalVideoShare : this.handleExternalVideoClick,
-        dataTest: "shareExternalVideo",
-      })
+      // actions.push({
+      //   icon: !isSharingVideo ? "external-video" : "external-video_off",
+      //   label: !isSharingVideo ? intl.formatMessage(intlMessages.startExternalVideoLabel)
+      //     : intl.formatMessage(intlMessages.stopExternalVideoLabel),
+      //   key: "external-video",
+      //   onClick: isSharingVideo ? stopExternalVideoShare : this.handleExternalVideoClick,
+      //   dataTest: "shareExternalVideo",
+      // })
     }
 
     if (amIPresenter && isSelectRandomUserEnabled) {
-      actions.push({
-        icon: "user",
-        label: intl.formatMessage(intlMessages.selectRandUserLabel),
-        key: this.selectUserRandId,
-        onClick: () => mountModal(<RandomUserSelectContainer isSelectedUser={false} />),
-        dataTest: "selectRandomUser",
-      })
+      // actions.push({
+      //   icon: "user",
+      //   label: intl.formatMessage(intlMessages.selectRandUserLabel),
+      //   key: this.selectUserRandId,
+      //   onClick: () => mountModal(<RandomUserSelectContainer isSelectedUser={false} />),
+      //   dataTest: "selectRandomUser",
+      // })
     }
 
     if (amIPresenter && showPushLayout && isLayoutsEnabled()) {
-      actions.push({
-        icon: 'send',
-        label: intl.formatMessage(intlMessages.propagateLayoutLabel),
-        key: 'propagate layout',
-        onClick: amIPresenter ? setMeetingLayout : setPushLayout,
-        dataTest: 'propagateLayout',
-      });
+      // actions.push({
+      //   icon: 'send',
+      //   label: intl.formatMessage(intlMessages.propagateLayoutLabel),
+      //   key: 'propagate layout',
+      //   onClick: amIPresenter ? setMeetingLayout : setPushLayout,
+      //   dataTest: 'propagateLayout',
+      // });
     }
 
     if (isLayoutsEnabled()){

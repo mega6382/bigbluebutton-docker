@@ -134,6 +134,7 @@ class UserParticipants extends Component {
     const { scrollArea } = this.state;
     const user = users[index];
     const isRTL = Settings.application.isRTL;
+    const forPresenter = false;
 
     return (
       <CellMeasurer
@@ -159,6 +160,7 @@ class UserParticipants extends Component {
               isRTL,
               lockSettingsProps,
               isThisMeetingLocked,
+              forPresenter,
             }}
             user={user}
             getScrollContainerRef={this.getScrollContainerRef}

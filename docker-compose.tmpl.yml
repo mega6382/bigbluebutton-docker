@@ -432,6 +432,8 @@ services:
 {{ if isTrue .Env.ENABLE_GREENLIGHT }}
   # greenlight
   greenlight:
+    build:
+      context: mod/greenlight
     image: bigbluebutton/greenlight:{{ .Env.TAG_GREENLIGHT }}-alpine
     restart: unless-stopped
     env_file: .env
