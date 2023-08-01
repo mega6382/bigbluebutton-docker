@@ -585,7 +585,6 @@ export default function Whiteboard(props) {
   const onMount = (app) => {
     const menu = document.getElementById('TD-Styles')?.parentElement;
     setSafeCurrentTool('select');
-    app.removeShapes();
 
     const canvas = document.getElementById('canvas');
     if (canvas) {
