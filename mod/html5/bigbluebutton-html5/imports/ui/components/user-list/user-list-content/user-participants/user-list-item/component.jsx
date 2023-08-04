@@ -661,6 +661,7 @@ class UserListItem extends PureComponent {
       isMe,
       isRTL,
       selectedUserId,
+      normalizeEmojiName,
     } = this.props;
 
     const {

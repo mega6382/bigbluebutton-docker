@@ -8,7 +8,7 @@ ARG TAG_HTML5
 COPY ./bigbluebutton-html5 /source
 RUN cd /source \
     && meteor npm ci --production \
-    && METEOR_DISABLE_OPTIMISTIC_CACHING=1 meteor build --architecture os.linux.x86_64 --allow-superuser  --directory /app \
+    && METEOR_DISABLE_OPTIMISTIC_CACHING=1 meteor build --debug --architecture os.linux.x86_64 --allow-superuser  --directory /app \
     && rm -rf /source
 
 RUN cd /app/bundle/programs/server \
