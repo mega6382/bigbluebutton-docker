@@ -170,6 +170,7 @@ const propTypes = {
   toggleUserLock: PropTypes.func.isRequired,
   isMeteorConnected: PropTypes.bool.isRequired,
   isMe: PropTypes.func.isRequired,
+  isForPresenterList: PropTypes.bool.isRequired,
 };
 
 const ROLE_MODERATOR = Meteor.settings.public.user.role_moderator;
@@ -623,7 +624,6 @@ class UserListItem extends PureComponent {
     const iconUser = user.emoji !== 'none'
       ? (<Icon iconName={normalizeEmojiName(user.emoji)} />)
       : user.name.toLowerCase().slice(0, 2);
-
     const iconVoiceOnlyUser = (<Icon iconName="volume_level_2" />);
     const userIcon = isVoiceOnly ? iconVoiceOnlyUser : iconUser;
 
@@ -800,12 +800,14 @@ class UserListItem extends PureComponent {
           : null}
       </Styled.UserItemInnerContents>
     );
+    
+    const raisedHandBgColor = normalizeEmojiName(user.emoji) == 'hand' ? '#ff4b4b' : '';
 
     const contents = !actions.length
       ? (
         <Styled.NoActionsListItem
           data-test={isMe(user.userId) ? 'userListItemCurrent' : 'userListItem'}
-          style={{ direction: isRTL ? 'rtl' : 'ltr' }}
+          style={{ direction: isRTL ? 'rtl' : 'ltr', backgroundColor: raisedHandBgColor }}
         >
           {innerContents}
         </Styled.NoActionsListItem>
@@ -813,7 +815,7 @@ class UserListItem extends PureComponent {
       : (
         <div
           data-test={isMe(user.userId) ? 'userListItemCurrent' : 'userListItem'}
-          style={{ direction: isRTL ? 'rtl' : 'ltr', width: '100%' }}
+          style={{ direction: isRTL ? 'rtl' : 'ltr', width: '100%', backgroundColor: raisedHandBgColor }}
         >
           {innerContents}
         </div>

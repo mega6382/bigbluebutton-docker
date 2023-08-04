@@ -115,59 +115,71 @@ class UserParticipants extends Component {
     return this.refScrollContainer;
   }
 
-  rowRenderer({
-    index,
-    parent,
-    style,
-    key,
-  }) {
-    const {
-      compact,
-      setEmojiStatus,
-      users,
-      requestUserInformation,
-      currentUser,
-      meetingIsBreakout,
-      lockSettingsProps,
-      isThisMeetingLocked,
-    } = this.props;
-    const { scrollArea } = this.state;
-    const user = users[index];
-    const isRTL = Settings.application.isRTL;
-    const forPresenter = false;
+  getNonPresenters(users) {
+    const nonPresenters = [];
+    for (const user of users) {
+      if(!user.presenter) {
+        nonPresenters.push(user);
+      }
+    }
+    return nonPresenters;
+  }
 
-    return (
-      <CellMeasurer
-        key={key}
-        cache={this.cache}
-        columnIndex={0}
-        parent={parent}
-        rowIndex={index}
-      >
-        <span
-          style={style}
+  rowRenderer (nonPresenters) {
+    return ({
+      index,
+      parent,
+      style,
+      key,
+    }) => {
+      const {
+        compact,
+        setEmojiStatus,
+        users,
+        requestUserInformation,
+        currentUser,
+        meetingIsBreakout,
+        lockSettingsProps,
+        isThisMeetingLocked,
+      } = this.props;
+      const { scrollArea } = this.state;
+      const user = nonPresenters[index];
+      const isRTL = Settings.application.isRTL;
+      const isForPresenterList = false;
+
+      return (
+        <CellMeasurer
           key={key}
-          id={`user-${user?.userId || ''}`}
+          cache={this.cache}
+          columnIndex={0}
+          parent={parent}
+          rowIndex={index}
         >
-          <UserListItemContainer
-            {...{
-              compact,
-              setEmojiStatus,
-              requestUserInformation,
-              currentUser,
-              meetingIsBreakout,
-              scrollArea,
-              isRTL,
-              lockSettingsProps,
-              isThisMeetingLocked,
-              forPresenter,
-            }}
-            user={user}
-            getScrollContainerRef={this.getScrollContainerRef}
-          />
-        </span>
-      </CellMeasurer>
-    );
+          <span
+            style={style}
+            key={key}
+            id={`user-${user?.userId || ''}`}
+          >
+            <UserListItemContainer
+              {...{
+                compact,
+                setEmojiStatus,
+                requestUserInformation,
+                currentUser,
+                meetingIsBreakout,
+                scrollArea,
+                isRTL,
+                lockSettingsProps,
+                isThisMeetingLocked,
+                isForPresenterList,
+              }}
+              user={user}
+              getScrollContainerRef={this.getScrollContainerRef}
+            />
+          </span>
+        </CellMeasurer>
+      );
+    };
   }
 
   handleClickSelectedUser(event) {
@@ -201,7 +213,7 @@ class UserParticipants extends Component {
       isMeetingMuteOnStart,
     } = this.props;
     const { isOpen, scrollArea } = this.state;
-
+    const nonPresenters = getNonPresenters(users);
     return (
       <Styled.UserListColumn data-test="userList">
         {
@@ -255,8 +267,8 @@ class UserParticipants extends Component {
                   }
                 }}
                 rowHeight={this.cache.rowHeight}
-                rowRenderer={this.rowRenderer}
-                rowCount={users.length || SKELETON_COUNT}
+                rowRenderer={this.rowRenderer(nonPresenters)}
+                rowCount={nonPresenters.length || SKELETON_COUNT}
                 height={height - 1}
                 width={width - 1}
                 overscanRowCount={30}

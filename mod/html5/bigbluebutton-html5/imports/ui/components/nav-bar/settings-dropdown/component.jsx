@@ -219,40 +219,40 @@ class SettingsDropdown extends PureComponent {
 
     this.menuItems = [];
 
-    this.getFullscreenItem(this.menuItems);
+    // this.getFullscreenItem(this.menuItems);
 
-    this.menuItems.push(
-      {
-        key: 'list-item-settings',
-        icon: 'settings',
-        dataTest: 'settings',
-        label: intl.formatMessage(intlMessages.settingsLabel),
-        description: intl.formatMessage(intlMessages.settingsDesc),
-        onClick: () => mountModal(<SettingsMenuContainer />),
-      },
-      {
-        key: 'list-item-about',
-        icon: 'about',
-        dataTest: 'aboutModal',
-        label: intl.formatMessage(intlMessages.aboutLabel),
-        description: intl.formatMessage(intlMessages.aboutDesc),
-        onClick: () => mountModal(<AboutContainer />),
-      },
-    );
+    // this.menuItems.push(
+    //   {
+    //     key: 'list-item-settings',
+    //     icon: 'settings',
+    //     dataTest: 'settings',
+    //     label: intl.formatMessage(intlMessages.settingsLabel),
+    //     description: intl.formatMessage(intlMessages.settingsDesc),
+    //     onClick: () => mountModal(<SettingsMenuContainer />),
+    //   },
+    //   {
+    //     key: 'list-item-about',
+    //     icon: 'about',
+    //     dataTest: 'aboutModal',
+    //     label: intl.formatMessage(intlMessages.aboutLabel),
+    //     description: intl.formatMessage(intlMessages.aboutDesc),
+    //     onClick: () => mountModal(<AboutContainer />),
+    //   },
+    // );
 
-    if (helpButton) {
-      this.menuItems.push(
-        {
-          key: 'list-item-help',
-          icon: 'help',
-          iconRight: 'popout_window',
-          label: intl.formatMessage(intlMessages.helpLabel),
-          dataTest: 'helpButton',
-          description: intl.formatMessage(intlMessages.helpDesc),
-          onClick: () => window.open(`${helpLink}`),
-        },
-      );
-    }
+    // if (helpButton) {
+    //   this.menuItems.push(
+    //     {
+    //       key: 'list-item-help',
+    //       icon: 'help',
+    //       iconRight: 'popout_window',
+    //       label: intl.formatMessage(intlMessages.helpLabel),
+    //       dataTest: 'helpButton',
+    //       description: intl.formatMessage(intlMessages.helpDesc),
+    //       onClick: () => window.open(`${helpLink}`),
+    //     },
+    //   );
+    // }
 
     if (isIos &&
       !isTabletApp &&
@@ -268,30 +268,30 @@ class SettingsDropdown extends PureComponent {
       );
     }
 
-    if (audioCaptionsEnabled && isMobile) {
-      this.menuItems.push(
-        {
-          key: 'audioCaptions',
-          dataTest: 'audioCaptions',
-          icon: audioCaptionsActive ? 'closed_caption_stop' : 'closed_caption',
-          label: intl.formatMessage(
-            audioCaptionsActive ? intlMessages.stopCaption : intlMessages.startCaption,
-          ),
-          onClick: () => audioCaptionsSet(!audioCaptionsActive),
-        },
-      );
-    }
+    // if (audioCaptionsEnabled && isMobile) {
+    //   this.menuItems.push(
+    //     {
+    //       key: 'audioCaptions',
+    //       dataTest: 'audioCaptions',
+    //       icon: audioCaptionsActive ? 'closed_caption_stop' : 'closed_caption',
+    //       label: intl.formatMessage(
+    //         audioCaptionsActive ? intlMessages.stopCaption : intlMessages.startCaption,
+    //       ),
+    //       onClick: () => audioCaptionsSet(!audioCaptionsActive),
+    //     },
+    //   );
+    // }
 
-    this.menuItems.push(
-      {
-        key: 'list-item-shortcuts',
-        icon: 'shortcuts',
-        label: intl.formatMessage(intlMessages.hotkeysLabel),
-        description: intl.formatMessage(intlMessages.hotkeysDesc),
-        onClick: () => mountModal(<ShortcutHelpComponent />),
-        divider: true,
-      },
-    );
+    // this.menuItems.push(
+    //   {
+    //     key: 'list-item-shortcuts',
+    //     icon: 'shortcuts',
+    //     label: intl.formatMessage(intlMessages.hotkeysLabel),
+    //     description: intl.formatMessage(intlMessages.hotkeysDesc),
+    //     onClick: () => mountModal(<ShortcutHelpComponent />),
+    //     divider: true,
+    //   },
+    // );
 
     if (allowLogoutSetting && isMeteorConnected) {
       this.menuItems.push(

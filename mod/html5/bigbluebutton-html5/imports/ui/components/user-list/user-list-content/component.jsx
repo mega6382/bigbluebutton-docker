@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Styled from './styles';
+import UserActionsContainer from './user-actions/container';
+import PresentersContainer from './user-participants/presenters/container';
 import UserParticipantsContainer from './user-participants/container';
 import UserMessagesContainer from './user-messages/container';
 import UserNotesContainer from './user-notes/container';
@@ -32,6 +34,7 @@ class UserContent extends PureComponent {
 
     return (
       <Styled.Content data-test="userListContent">
+        { currentUser.role === ROLE_MODERATOR || currentUser.presenter ? <UserActionsContainer /> : null }
         {isChatEnabled() ? <UserMessagesContainer /> : null}
         {currentUser.role === ROLE_MODERATOR ? <UserCaptionsContainer /> : null}
         <UserNotesContainer />
@@ -41,6 +44,7 @@ class UserContent extends PureComponent {
           ) : null}
         <UserPollsContainer isPresenter={currentUser.presenter} />
         <BreakoutRoomContainer />
+        <PresentersContainer compact={compact}/>
         <UserParticipantsContainer compact={compact}/>
       </Styled.Content>
     );

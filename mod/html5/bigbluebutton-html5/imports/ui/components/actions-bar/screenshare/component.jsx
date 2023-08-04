@@ -168,11 +168,32 @@ const ScreenshareButton = ({
 
   const dataTest = isVideoBroadcasting ? 'stopScreenShare' : 'startScreenShare';
 
+  const shareScreenIcon = isVideoBroadcasting ? 
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" x="0px" y="0px">
+  <g data-name="Layer 2">
+    <path fill="#fff"
+      d="M66.46,28.18l-7.09-3.77a2,2,0,0,0-2.94,1.84l0,1a34.55,34.55,0,0,0-29,34.18,3,3,0,1,0,6,0A28.57,28.57,0,0,1,56.68,33.33h0l0,.94a2,2,0,0,0,3.06,1.63l6.81-4.26A2,2,0,0,0,66.46,28.18Z" />
+    <path fill="#fff"
+      d="M86,12.25H14c-5,0-9,4.52-9,10V65c0,5.51,4.07,10,9,10H47v6.73H32.46a3,3,0,0,0,0,6H67.54a3,3,0,1,0,0-6H53V75H86c5,0,9-4.52,9-10V22.28C95,16.77,90.93,12.25,86,12.25ZM89,65c0,2.14-1.42,4-3,4H14c-1.62,0-3-1.89-3-4V22.28c0-2.15,1.42-4,3-4H86c1.62,0,3,1.88,3,4Z" />
+  </g>
+</svg> : 
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" x="0px" y="0px">
+  <g data-name="Layer 2">
+    <path fill="#fff"
+      d="M51.67,38.72a27.76,27.76,0,0,1,5-1.44l0,.94a2,2,0,0,0,3.06,1.63l6.81-4.26a2,2,0,0,0-.12-3.46l-7.09-3.77a2,2,0,0,0-2.94,1.83l0,1a34.83,34.83,0,0,0-8.85,2.69Z" />
+    <path fill="#fff"
+      d="M86,16.2H32.67l5.07,6H86c1.62,0,3,1.88,3,4v42.7c0,2.15-1.42,4-3,4h-5.4l5.06,6H86c5,0,9-4.51,9-10V26.23C95,20.71,90.93,16.2,86,16.2Z" />
+    <path fill="#fff"
+      d="M21,9.36a2.9,2.9,0,0,0-1.7-1A3,3,0,0,0,16.73,9a3,3,0,0,0-.36,4.23l2.5,3H14c-5,0-9,4.51-9,10v42.7c0,5.52,4.07,10,9,10H47v6.73H32.46a3,3,0,0,0,0,6H67.54a3,3,0,1,0,0-6H53V79H71.82l9.79,11.61a3,3,0,0,0,2.3,1.07,3,3,0,0,0,1.93-.71,2.9,2.9,0,0,0,.9-1.33,3,3,0,0,0-.54-2.89ZM14,73c-1.62,0-3-1.88-3-4V26.23c0-2.15,1.42-4,3-4h9.89L38.77,39.78A34.59,34.59,0,0,0,27.48,65.41a3,3,0,1,0,6,0,28.62,28.62,0,0,1,9.16-21L66.76,73Z" />
+  </g>
+</svg>;
+
   return shouldAllowScreensharing
     ? (
       <Button
         disabled={(!isMeteorConnected && !isVideoBroadcasting)}
-        icon={isVideoBroadcasting ? 'desktop' : 'desktop_off'}
+        // icon={isVideoBroadcasting ? 'desktop' : 'desktop_off'}
+        customIcon={shareScreenIcon}
         data-test={dataTest}
         label={intl.formatMessage(vLabel)}
         description={intl.formatMessage(vDescr)}

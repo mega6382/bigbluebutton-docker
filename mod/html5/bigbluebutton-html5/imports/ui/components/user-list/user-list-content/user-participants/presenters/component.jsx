@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { defineMessages } from 'react-intl';
 import PropTypes from 'prop-types';
-import Styled from './styles';
+import Styled from '../styles';
 import { findDOMNode } from 'react-dom';
 import {
   AutoSizer,
@@ -114,60 +114,72 @@ class Presenters extends Component {
   getScrollContainerRef() {
     return this.refScrollContainer;
   }
+  getPresenters(users) {
+    const presenters = [];
+    for (const user of users) {
+      if(user.presenter) {
+        presenters.push(user);
+      }
+    }
+    return presenters;
+  }
 
-  rowRenderer({
+
+  rowRenderer (presenters) {
+    return ({
     index,
     parent,
     style,
     key,
-  }) {
-    const {
-      compact,
-      setEmojiStatus,
-      users,
-      requestUserInformation,
-      currentUser,
-      meetingIsBreakout,
-      lockSettingsProps,
-      isThisMeetingLocked,
-    } = this.props;
-    const { scrollArea } = this.state;
-    const user = users[index];
-    const isRTL = Settings.application.isRTL;
-    const forPresenter = true;
+    }) => {
+      const {
+        compact,
+        setEmojiStatus,
+        users,
+        requestUserInformation,
+        currentUser,
+        meetingIsBreakout,
+        lockSettingsProps,
+        isThisMeetingLocked,
+      } = this.props;
+      const { scrollArea } = this.state;
+      const user = presenters[index];
+      const isRTL = Settings.application.isRTL;
+      const isForPresenterList = true;
 
-    return (
-      <CellMeasurer
-        key={key}
-        cache={this.cache}
-        columnIndex={0}
-        parent={parent}
-        rowIndex={index}
-      >
-        <span
-          style={style}
+      return (
+        <CellMeasurer
           key={key}
-          id={`user-${user?.userId || ''}`}
+          cache={this.cache}
+          columnIndex={0}
+          parent={parent}
+          rowIndex={index}
         >
-          <UserListItemContainer
-            {...{
-              compact,
-              setEmojiStatus,
-              requestUserInformation,
-              currentUser,
-              meetingIsBreakout,
-              scrollArea,
-              isRTL,
-              lockSettingsProps,
-              isThisMeetingLocked,
-              forPresenter,
-            }}
-            user={user}
-            getScrollContainerRef={this.getScrollContainerRef}
-          />
-        </span>
-      </CellMeasurer>
-    );
+          <span
+            style={style}
+            key={key}
+            id={`user-${user?.userId || ''}`}
+          >
+            <UserListItemContainer
+              {...{
+                compact,
+                setEmojiStatus,
+                requestUserInformation,
+                currentUser,
+                meetingIsBreakout,
+                scrollArea,
+                isRTL,
+                lockSettingsProps,
+                isThisMeetingLocked,
+                isForPresenterList,
+              }}
+              user={user}
+              getScrollContainerRef={this.getScrollContainerRef}
+            />
+          </span>
+        </CellMeasurer>
+      );
+    };
   }
 
   handleClickSelectedUser(event) {
@@ -201,6 +213,7 @@ class Presenters extends Component {
       isMeetingMuteOnStart,
     } = this.props;
     const { isOpen, scrollArea } = this.state;
+    const presenters = getPresenters(users);
 
     return (
       <Styled.UserListColumn data-test="userList">
@@ -209,7 +222,7 @@ class Presenters extends Component {
             ? (
               <Styled.Container>
                 <Styled.SmallTitle>
-                  Presenters
+                  Presenter
                   {users.length > 0 ? ` (${users.length})` : null}
                 </Styled.SmallTitle>
                 {currentUser?.role === ROLE_MODERATOR
@@ -230,7 +243,7 @@ class Presenters extends Component {
         }
         <Styled.VirtualizedScrollableList
           id={'user-list-virtualized-scroll'}
-          aria-label="Users list"
+          aria-label="Presenters list"
           role="region"
           tabIndex={0}
           ref={(ref) => {
@@ -255,8 +268,8 @@ class Presenters extends Component {
                   }
                 }}
                 rowHeight={this.cache.rowHeight}
-                rowRenderer={this.rowRenderer}
-                rowCount={users.length || SKELETON_COUNT}
+                rowRenderer={this.rowRenderer(presenters)}
+                rowCount={presenters.length || SKELETON_COUNT}
                 height={height - 1}
                 width={width - 1}
                 overscanRowCount={30}

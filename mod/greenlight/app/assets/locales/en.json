@@ -102,12 +102,12 @@
     }
   },
   "room": {
-    "room": "Room",
-    "rooms": "Rooms",
-    "room_name": "Room Name",
-    "add_new_room": "+ New Room",
-    "create_room": "Create Room",
-    "delete_room": "Delete Room",
+    "room": "Class",
+    "rooms": "Classes",
+    "room_name": "Class Name",
+    "add_new_room": "+ New Class",
+    "create_room": "Create Class",
+    "delete_room": "Delete Class",
     "create_new_room": "Create New Room",
     "enter_room_name": "Enter the room name",
     "shared_by": "shared by ",
