@@ -168,7 +168,7 @@ const ScreenshareButton = ({
 
   const dataTest = isVideoBroadcasting ? 'stopScreenShare' : 'startScreenShare';
 
-  const shareScreenIcon = isVideoBroadcasting ? 
+  const shareScreenIcon = !isVideoBroadcasting ? 
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" x="0px" y="0px">
   <g data-name="Layer 2">
     <path fill="#fff"

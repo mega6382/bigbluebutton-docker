@@ -39,7 +39,7 @@ const intlMessages = defineMessages({
 });
 
 const ROLE_MODERATOR = Meteor.settings.public.user.role_moderator;
-const SKELETON_COUNT = 10;
+const SKELETON_COUNT = 0;
 
 class UserParticipants extends Component {
   constructor() {

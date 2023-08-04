@@ -216,7 +216,7 @@ class Presenters extends Component {
     const presenters = this.getPresenters(users);
 
     return (
-      <Styled.UserListColumn data-test="userList">
+      <Styled.UserListColumn data-test="presenterList">
         {
           !compact
             ? (
@@ -224,18 +224,6 @@ class Presenters extends Component {
                 <Styled.SmallTitle>
                   Presenter
                 </Styled.SmallTitle>
-                {currentUser?.role === ROLE_MODERATOR
-                  ? (
-                    <UserOptionsContainer {...{
-                      users,
-                      clearAllEmojiStatus,
-                      meetingIsBreakout,
-                      isMeetingMuteOnStart,
-                    }}
-                    />
-                  ) : null
-                }
-
               </Styled.Container>
             )
             : <Styled.Separator />
