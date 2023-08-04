@@ -257,8 +257,8 @@ class Presenters extends Component {
                 rowHeight={this.cache.rowHeight}
                 rowRenderer={this.rowRenderer(presenters)}
                 rowCount={presenters.length || SKELETON_COUNT}
-                // height={height - 1}
-                // width={width - 1}
+                height={height - 1}
+                width={width - 1}
                 overscanRowCount={30}
                 deferredMeasurementCache={this.cache}
                 tabIndex={-1}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import Icon from '/imports/ui/components/common/icon/component';
 import GuestPolicyContainer from '/imports/ui/components/waiting-users/guest-policy/container';
+import LayoutModalContainer from '/imports/ui/components/layout/modal/container';
 import Styled from './styles';
 import { PANELS, ACTIONS } from '/imports/ui/components/layout/enums';
 
@@ -102,33 +103,33 @@ class UserActions extends Component {
         </div>
       </Styled.ListItem>,
       // Polling
-      <Styled.ListItem
-        aria-label={intl.formatMessage(intlMessages.pollBtnLabel)}
-        aria-describedby="polling"
-        role="button"
-        tabIndex={1}
-        onClick={() => {
-          if (Session.equals('pollInitiated', true)) {
-            Session.set('resetPollPanel', true);
-          }
-          layoutContextDispatch({
-            type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
-            value: true,
-          });
-          layoutContextDispatch({
-            type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-            value: PANELS.POLL,
-          });
-          Session.set('forcePollOpen', true);
-        }}
-      >
-        <Icon iconName="polling" />
-        <div aria-hidden>
-          <Styled.ActionsTitle data-test="polling">
-            { intl.formatMessage(intlMessages.pollBtnLabel) }
-          </Styled.ActionsTitle>
-        </div>
-      </Styled.ListItem>,
+      // <Styled.ListItem
+      //   aria-label={intl.formatMessage(intlMessages.pollBtnLabel)}
+      //   aria-describedby="polling"
+      //   role="button"
+      //   tabIndex={1}
+      //   onClick={() => {
+      //     if (Session.equals('pollInitiated', true)) {
+      //       Session.set('resetPollPanel', true);
+      //     }
+      //     layoutContextDispatch({
+      //       type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+      //       value: true,
+      //     });
+      //     layoutContextDispatch({
+      //       type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+      //       value: PANELS.POLL,
+      //     });
+      //     Session.set('forcePollOpen', true);
+      //   }}
+      // >
+      //   <Icon iconName="polling" />
+      //   <div aria-hidden>
+      //     <Styled.ActionsTitle data-test="polling">
+      //       { intl.formatMessage(intlMessages.pollBtnLabel) }
+      //     </Styled.ActionsTitle>
+      //   </div>
+      // </Styled.ListItem>,
       // Layout
       <Styled.ListItem
         aria-label={intl.formatMessage(intlMessages.layoutModal)}
