@@ -223,7 +223,6 @@ class Presenters extends Component {
               <Styled.Container>
                 <Styled.SmallTitle>
                   Presenter
-                  {users.length > 0 ? ` (${users.length})` : null}
                 </Styled.SmallTitle>
                 {currentUser?.role === ROLE_MODERATOR
                   ? (

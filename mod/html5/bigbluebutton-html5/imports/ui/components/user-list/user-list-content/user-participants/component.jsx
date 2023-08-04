@@ -222,7 +222,7 @@ class UserParticipants extends Component {
               <Styled.Container>
                 <Styled.SmallTitle>
                   {intl.formatMessage(intlMessages.usersTitle)}
-                  {users.length > 0 ? ` (${users.length})` : null}
+                  {nonPresenters.length > 0 ? ` (${nonPresenters.length})` : null}
                 </Styled.SmallTitle>
                 {currentUser?.role === ROLE_MODERATOR
                   ? (
