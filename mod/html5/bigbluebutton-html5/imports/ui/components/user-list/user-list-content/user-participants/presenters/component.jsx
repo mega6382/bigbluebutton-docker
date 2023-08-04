@@ -39,7 +39,7 @@ const intlMessages = defineMessages({
 });
 
 const ROLE_MODERATOR = Meteor.settings.public.user.role_moderator;
-const SKELETON_COUNT = 10;
+const SKELETON_COUNT = 0;
 
 class Presenters extends Component {
   constructor() {
@@ -67,7 +67,7 @@ class Presenters extends Component {
   }
 
   componentDidMount() {
-    document.getElementById('user-list-virtualized-scroll')?.getElementsByTagName('div')[0]?.firstElementChild?.setAttribute('aria-label', 'Users list');
+    document.getElementById('user-list-virtualized-scroll')?.getElementsByTagName('div')[0]?.firstElementChild?.setAttribute('aria-label', 'Presenters list');
 
     const { compact } = this.props;
     if (!compact) {
@@ -257,8 +257,8 @@ class Presenters extends Component {
                 rowHeight={this.cache.rowHeight}
                 rowRenderer={this.rowRenderer(presenters)}
                 rowCount={presenters.length || SKELETON_COUNT}
-                height={height - 1}
-                width={width - 1}
+                // height={height - 1}
+                // width={width - 1}
                 overscanRowCount={30}
                 deferredMeasurementCache={this.cache}
                 tabIndex={-1}

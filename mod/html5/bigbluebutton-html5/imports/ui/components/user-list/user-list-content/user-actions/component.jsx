@@ -79,6 +79,7 @@ class UserActions extends Component {
     const {
       intl,
       layoutContextDispatch,
+      mountModal,
       isMeteorConnected,
       isMeetingMuted,
       toggleMuteAllUsers,
