@@ -213,7 +213,7 @@ class UserParticipants extends Component {
       isMeetingMuteOnStart,
     } = this.props;
     const { isOpen, scrollArea } = this.state;
-    const nonPresenters = getNonPresenters(users);
+    const nonPresenters = this.getNonPresenters(users);
     return (
       <Styled.UserListColumn data-test="userList">
         {
