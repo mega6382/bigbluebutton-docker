@@ -284,7 +284,7 @@ const PresentationMenu = (props) => {
 
   return (
     <Styled.Right>
-      <BBBMenu
+      {/* <BBBMenu
         trigger={(
           <TooltipContainer title={intl.formatMessage(intlMessages.optionsLabel)}>
             <Styled.DropdownButton
@@ -311,7 +311,7 @@ const PresentationMenu = (props) => {
           container: fullscreenRef,
         }}
         actions={options}
-      />
+      /> */}
     </Styled.Right>
   );
 };

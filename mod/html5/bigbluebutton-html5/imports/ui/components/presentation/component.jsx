@@ -92,7 +92,7 @@ class Presentation extends PureComponent {
     this.setTldrawAPI = this.setTldrawAPI.bind(this);
     this.setIsPanning = this.setIsPanning.bind(this);
     this.handlePanShortcut = this.handlePanShortcut.bind(this);
-    // this.renderPresentationMenu = this.renderPresentationMenu.bind(this);
+    this.renderPresentationMenu = this.renderPresentationMenu.bind(this);
 
     this.onResize = () => setTimeout(this.handleResize.bind(this), 0);
     this.renderCurrentPresentationToast = this.renderCurrentPresentationToast.bind(this);
@@ -591,24 +591,24 @@ class Presentation extends PureComponent {
     );
   }
 
-  // renderPresentationMenu() {
-  //   const {
-  //     intl,
-  //     fullscreenElementId,
-  //     layoutContextDispatch,
-  //   } = this.props;
-  //   const { tldrawAPI } = this.state;
+  renderPresentationMenu() {
+    const {
+      intl,
+      fullscreenElementId,
+      layoutContextDispatch,
+    } = this.props;
+    const { tldrawAPI } = this.state;
 
-  //   return (
-  //     <PresentationMenu
-  //       fullscreenRef={this.refPresentationContainer}
-  //       tldrawAPI={tldrawAPI}
-  //       elementName={intl.formatMessage(intlMessages.presentationLabel)}
-  //       elementId={fullscreenElementId}
-  //       layoutContextDispatch={layoutContextDispatch}
-  //     />
-  //   );
-  // }
+    return (
+      <PresentationMenu
+        fullscreenRef={this.refPresentationContainer}
+        tldrawAPI={tldrawAPI}
+        elementName={intl.formatMessage(intlMessages.presentationLabel)}
+        elementId={fullscreenElementId}
+        layoutContextDispatch={layoutContextDispatch}
+      />
+    );
+  }
 
   render() {
     const {
@@ -715,7 +715,7 @@ class Presentation extends PureComponent {
                 }}
               >
                 <Styled.VisuallyHidden id="currentSlideText">{slideContent}</Styled.VisuallyHidden>
-                {!tldrawIsMounting && currentSlide}
+                {!tldrawIsMounting && currentSlide && this.renderPresentationMenu()}
                 <WhiteboardContainer
                   whiteboardId={currentSlide?.id}
                   podId={podId}
