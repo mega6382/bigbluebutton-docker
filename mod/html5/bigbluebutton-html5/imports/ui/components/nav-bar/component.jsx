@@ -209,7 +209,7 @@ class NavBar extends Component {
         }
       >
         <Styled.Top>
-          <Styled.Left>
+          {/* <Styled.Left>
             {isExpanded && document.dir === 'ltr'
               && <Styled.ArrowLeft iconName="left_arrow" />}
             {!isExpanded && document.dir === 'rtl'
@@ -233,7 +233,7 @@ class NavBar extends Component {
               && <Styled.ArrowRight iconName="right_arrow" />}
             {isExpanded && document.dir === 'rtl'
               && <Styled.ArrowRight iconName="right_arrow" />}
-          </Styled.Left>
+          </Styled.Left> */}
           <Styled.Center>
             <Styled.PresentationTitle data-test="presentationTitle">
               {presentationTitle}

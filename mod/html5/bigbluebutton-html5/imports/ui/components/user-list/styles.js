@@ -35,6 +35,13 @@ const Messages = styled.div`
   max-height: 30vh;
 `;
 
+const UserActions = styled.div`
+  flex-grow: 0;
+  display: flex;
+  flex-flow: column;
+  flex-shrink: 0;
+`;
+
 const ListItem = styled.div`
   display: flex;
   flex-flow: row;
@@ -77,4 +84,5 @@ export default {
   SmallTitle,
   ListItem,
   Messages,
+  UserActions,
 };

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
+import { withModalMounter } from '/imports/ui/components/common/modal/service';
 import Icon from '/imports/ui/components/common/icon/component';
 import GuestPolicyContainer from '/imports/ui/components/waiting-users/guest-policy/container';
 import LayoutModalContainer from '/imports/ui/components/layout/modal/container';
@@ -205,7 +206,7 @@ class UserActions extends Component {
 
 
     return (
-      <Styled.Messages>
+      <Styled.UserActions>
         <Styled.Container>
           <Styled.SmallTitle data-test="userActions">
             Actions
@@ -216,11 +217,11 @@ class UserActions extends Component {
             {this.renderActions()}
           </Styled.List>
         </Styled.ScrollableList>
-      </Styled.Messages>
+      </Styled.UserActions>
     );
   }
 }
 
 UserActions.propTypes = propTypes;
 
-export default injectIntl(UserActions);
+export default withModalMounter(injectIntl(UserActions));

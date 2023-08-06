@@ -36,8 +36,8 @@ const TldrawGlobalStyle = createGlobalStyle`
   ${({ hasWBAccess, isPresenter, size }) => (hasWBAccess || isPresenter) && `
   #TD-Tools-Dots, #TD-Delete, #TD-Styles,
    #TD-PrimaryTools-Shapes, #TD-PrimaryTools-Pencil2,
-    #TD-PrimaryTools-Text, #TD-PrimaryTools-ArrowTopRight {
-    display: none;
+    #TD-PrimaryTools-Text, #TD-PrimaryTools-ArrowTopRight, #TD-TopPanel-Undo, #TD-TopPanel-Redo {
+    display: none !important;
   }
     #TD-Tools-Dots {
       height: ${size}px;

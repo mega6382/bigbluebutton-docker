@@ -224,7 +224,7 @@ class UserParticipants extends Component {
                   {intl.formatMessage(intlMessages.usersTitle)}
                   {nonPresenters.length > 0 ? ` (${nonPresenters.length})` : null}
                 </Styled.SmallTitle>
-                {currentUser?.role === ROLE_MODERATOR
+                {/* {currentUser?.role === ROLE_MODERATOR
                   ? (
                     <UserOptionsContainer {...{
                       users,
@@ -234,7 +234,7 @@ class UserParticipants extends Component {
                     }}
                     />
                   ) : null
-                }
+                } */}
 
               </Styled.Container>
             )

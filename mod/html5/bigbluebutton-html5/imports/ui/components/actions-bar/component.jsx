@@ -51,7 +51,7 @@ class ActionsBar extends PureComponent {
           }
         }
       >
-        <Styled.Left>
+        {/* <Styled.Left>
           <ActionsDropdown {...{
             amIPresenter,
             amIModerator,
@@ -79,7 +79,7 @@ class ActionsBar extends PureComponent {
               <AudioCaptionsButtonContainer />
             )
             : null }
-        </Styled.Left>
+        </Styled.Left> */}
         <Styled.Center>
           <AudioControlsContainer />
           {enableVideo
@@ -92,8 +92,6 @@ class ActionsBar extends PureComponent {
             isMeteorConnected,
           }}
           />
-        </Styled.Center>
-        <Styled.Right>
           { shouldShowOptionsButton ?
             <PresentationOptionsContainer
               presentationIsOpen={presentationIsOpen}
@@ -116,7 +114,9 @@ class ActionsBar extends PureComponent {
               }
               />
             ) : null}
-        </Styled.Right>
+        </Styled.Center>
+        {/* <Styled.Right>
+        </Styled.Right> */}
       </Styled.ActionsBar>
     );
   }
