@@ -37,6 +37,8 @@ const ActionsLock = styled.div`
 
 const Messages = styled(Styled.Messages)``;
 
+const UserActions = styled(Styled.UserActions)``;
+
 const Container = styled(StyledContent.Container)``;
 
 const SmallTitle = styled(Styled.SmallTitle)``;
@@ -52,6 +54,7 @@ export default {
   ActionsTitle,
   ActionsLock,
   Messages,
+  UserActions,
   Container,
   SmallTitle,
   ScrollableList,
