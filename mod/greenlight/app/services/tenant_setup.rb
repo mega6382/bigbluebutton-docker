@@ -43,7 +43,7 @@ class TenantSetup
       { setting: Setting.find_by(name: 'PrimaryColorLight'), value: '#e8eff9', provider: @provider },
       { setting: Setting.find_by(name: 'PrimaryColorDark'), value: '#316cbe', provider: @provider },
       { setting: Setting.find_by(name: 'BrandingImage'),
-        value: ActionController::Base.helpers.image_path('bbb_logo.png'),
+        value: ActionController::Base.helpers.image_path('trn-logo-new.png'),
         provider: @provider },
       { setting: Setting.find_by(name: 'Terms'), value: '', provider: @provider },
       { setting: Setting.find_by(name: 'PrivacyPolicy'), value: '', provider: @provider },

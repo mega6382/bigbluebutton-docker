@@ -1,8 +1,8 @@
 export const LAYOUT_TYPE = {
-  CUSTOM_LAYOUT: 'custom',
+  // CUSTOM_LAYOUT: 'custom',
   SMART_LAYOUT: 'smart',
   PRESENTATION_FOCUS: 'presentationFocus',
-  VIDEO_FOCUS: 'videoFocus',
+  // VIDEO_FOCUS: 'videoFocus',
 };
 
 export const DEVICE_TYPE = {

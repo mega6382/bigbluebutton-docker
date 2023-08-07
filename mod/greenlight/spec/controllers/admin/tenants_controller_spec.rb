@@ -179,7 +179,7 @@ RSpec.describe Api::V1::Admin::TenantsController, type: :controller do
         { setting: Setting.find_by(name: 'PrimaryColorLight'), value: '#e8eff9', provider: },
         { setting: Setting.find_by(name: 'PrimaryColorDark'), value: '#316cbe', provider: },
         { setting: Setting.find_by(name: 'BrandingImage'),
-          value: ActionController::Base.helpers.image_path('bbb_logo.png'),
+          value: ActionController::Base.helpers.image_path('trn-logo-new.png'),
           provider: },
         { setting: Setting.find_by(name: 'Terms'), value: '', provider: },
         { setting: Setting.find_by(name: 'PrivacyPolicy'), value: '', provider: },
