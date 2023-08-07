@@ -50,8 +50,7 @@ const PresentationOptionsContainer = ({
   const isThereCurrentPresentation = hasExternalVideo || hasScreenshare || hasPresentation || hasPinnedSharedNotes;
 
   const presentationIcon = !presentationIsOpen ? 
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
-    viewBox="0 0 24 28.283749999999998" style="enable-background:new 0 0 24 22.627;" xml:space="preserve">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 28.283749999999998" style="enable-background:new 0 0 24 22.627;">
     <g>
       <path d="M23,4.314c0.55,0,1-0.45,1-1v-1c0-0.55-0.45-1-1-1H4.828l3,3H22H23z" />
       <path d="M2.171,4.314L0.029,2.172C0.021,2.22,0,2.263,0,2.314v1c0,0.55,0.45,1,1,1h1H2.171z" />
@@ -61,8 +60,7 @@ const PresentationOptionsContainer = ({
       <polygon style="fill: rgb(255, 0, 0);" points="2.102,0 0.685,1.414 3.585,4.314 4.585,5.314 21.9,22.627 23.314,21.213 7.415,5.314 6.415,4.314  " />
     </g>
   </svg> : 
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
-    viewBox="0 0 24 26.25" style="enable-background:new 0 0 24 21;" xml:space="preserve">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 26.25" style="enable-background:new 0 0 24 21;">
     <g>
       <path d="M22,3h1c0.55,0,1-0.45,1-1V1c0-0.55-0.45-1-1-1H1C0.45,0,0,0.45,0,1v1c0,0.55,0.45,1,1,1h1H22z" />
       <path
