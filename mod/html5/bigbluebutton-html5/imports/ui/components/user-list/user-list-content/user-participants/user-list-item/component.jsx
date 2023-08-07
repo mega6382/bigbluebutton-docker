@@ -299,7 +299,7 @@ class UserListItem extends PureComponent {
     } = this.props;
     const { showNestedOptions } = this.state;
 
-    if (!user) return [];
+    if (!user || !currentUser) return [];
 
     const { clientType, isSharingWebcam, pin: userIsPinned } = user;
     const isDialInUser = clientType === 'dial-in-user';

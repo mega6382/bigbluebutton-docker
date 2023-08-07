@@ -2,7 +2,7 @@ import React from 'react';
 
 export function LockStruct() {
   return ({
-    isLocked: true,
+    isLocked: false,
     lockSettings: {
       disableCam: true,
       disableMic: true,
@@ -10,15 +10,15 @@ export function LockStruct() {
       disablePrivateChat: true,
       disablePublicChat: true,
       lockOnJoin: true,
-      lockOnJoinConfigurable: true,
+      lockOnJoinConfigurable: false,
       hideViewersCursor: false,
     },
     userLocks: {
-      userWebcam: true,
-      userMic: true,
-      userNotes: true,
-      userPrivateChat: true,
-      userPublicChat: true,
+      userWebcam: false,
+      userMic: false,
+      userNotes: false,
+      userPrivateChat: false,
+      userPublicChat: false,
     },
   });
 }
