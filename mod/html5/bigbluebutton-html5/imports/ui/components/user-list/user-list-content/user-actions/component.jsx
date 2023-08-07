@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import { withModalMounter } from '/imports/ui/components/common/modal/service';
+import LockViewersContainer from '/imports/ui/components/lock-viewers/container';
 import Icon from '/imports/ui/components/common/icon/component';
 import GuestPolicyContainer from '/imports/ui/components/waiting-users/guest-policy/container';
 import LayoutModalContainer from '/imports/ui/components/layout/modal/container';
@@ -47,6 +48,14 @@ const intlMessages = defineMessages({
   unmuteAllDesc: {
     id: 'app.userList.userOptions.unmuteAllDesc',
     description: 'Unmute all desc',
+  },
+  lockViewersLabel: {
+    id: 'app.userList.userOptions.lockViewersLabel',
+    description: 'Lock viewers label',
+  },
+  lockViewersDesc: {
+    id: 'app.userList.userOptions.lockViewersDesc',
+    description: 'Lock viewers description',
   },
   guestPolicyLabel: {
     id: 'app.userList.userOptions.guestPolicyLabel',
@@ -197,6 +206,21 @@ class UserActions extends Component {
           </div>
         </Styled.ListItem>);
       }
+
+        userActions.push(<Styled.ListItem
+          aria-label={intl.formatMessage(intlMessages.lockViewersLabel)}
+          aria-describedby="lockViewersButton"
+          role="button"
+          tabIndex={6}
+          onClick={() => mountModal(<LockViewersContainer />)}
+        >
+          <Icon iconName="lock" />
+          <div aria-hidden>
+            <Styled.ActionsTitle data-test="lockViewersButton">
+              { intl.formatMessage(intlMessages.lockViewersLabel) }
+            </Styled.ActionsTitle>
+          </div>
+        </Styled.ListItem>);
     }
 
     return userActions;
