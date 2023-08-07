@@ -67,7 +67,7 @@ class Presenters extends Component {
   }
 
   componentDidMount() {
-    document.getElementById('user-list-virtualized-scroll')?.getElementsByTagName('div')[0]?.firstElementChild?.setAttribute('aria-label', 'Presenters list');
+    document.getElementById('presenter-list-virtualized-scroll')?.getElementsByTagName('div')[0]?.firstElementChild?.setAttribute('aria-label', 'Presenters list');
 
     const { compact } = this.props;
     if (!compact) {
@@ -158,7 +158,7 @@ class Presenters extends Component {
           <span
             style={style}
             key={key}
-            id={`user-${user?.userId || ''}`}
+            id={`presenter-${user?.userId || ''}`}
           >
             <UserListItemContainer
               {...{
@@ -185,7 +185,7 @@ class Presenters extends Component {
   handleClickSelectedUser(event) {
     let selectedUser = null;
     if (event.path) {
-      selectedUser = event.path.find(p => p.id && p.id.includes('user-'));
+      selectedUser = event.path.find(p => p.id && p.id.includes('presenter-'));
     }
     this.setState({ selectedUser });
   }
@@ -229,7 +229,7 @@ class Presenters extends Component {
             : <Styled.Separator />
         }
         <Styled.VirtualizedScrollableList
-          id={'user-list-virtualized-scroll'}
+          id={'presenter-list-virtualized-scroll'}
           aria-label="Presenters list"
           role="region"
           tabIndex={0}
