@@ -39,7 +39,7 @@ server {
   }
 
   # serve default.pdf from /www/
-  location = /default.pdf {
+  location = /default.jpeg {
     try_files $uri =404;
   }
 
