@@ -438,23 +438,23 @@ class UserListItem extends PureComponent {
         },
         icon: 'unmute',
       },
-      {
-        allowed: allowedToChangeWhiteboardAccess
-          && !user.presenter
-          && isMeteorConnected
-          && !isDialInUser
-          && !showNestedOptions,
-        key: 'changeWhiteboardAccess',
-        label: user.whiteboardAccess
-          ? intl.formatMessage(messages.removeWhiteboardAccess)
-          : intl.formatMessage(messages.giveWhiteboardAccess),
-        onClick: () => {
-          WhiteboardService.changeWhiteboardAccess(user.userId, !user.whiteboardAccess);
-          this.handleClose();
-        },
-        icon: 'pen_tool',
-        dataTest: 'changeWhiteboardAccess',
-      },
+      // {
+      //   allowed: allowedToChangeWhiteboardAccess
+      //     && !user.presenter
+      //     && isMeteorConnected
+      //     && !isDialInUser
+      //     && !showNestedOptions,
+      //   key: 'changeWhiteboardAccess',
+      //   label: user.whiteboardAccess
+      //     ? intl.formatMessage(messages.removeWhiteboardAccess)
+      //     : intl.formatMessage(messages.giveWhiteboardAccess),
+      //   onClick: () => {
+      //     WhiteboardService.changeWhiteboardAccess(user.userId, !user.whiteboardAccess);
+      //     this.handleClose();
+      //   },
+      //   icon: 'pen_tool',
+      //   dataTest: 'changeWhiteboardAccess',
+      // },
       {
         allowed: allowedToSetPresenter && isMeteorConnected && !isDialInUser && !showNestedOptions,
         key: 'setPresenter',

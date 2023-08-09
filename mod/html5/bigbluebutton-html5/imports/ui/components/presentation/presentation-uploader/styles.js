@@ -579,6 +579,12 @@ const ExtraHint = styled.div`
   font-weight: bold;
 `;
 
+const BackHint = styled.div`
+  margin-top: 2rem;
+  font-weight: bold;
+  font-size: 15px;
+`;
+
 const ExternalUpload = styled.div`
   background-color: ${colorOffWhite};
   border-radius: ${borderRadius};
@@ -704,6 +710,7 @@ export default {
   TableItemActions,
   DownloadButton,
   ExtraHint,
+  BackHint,
   ExternalUpload,
   ExternalUploadTitle,
   ExternalUploadButton,

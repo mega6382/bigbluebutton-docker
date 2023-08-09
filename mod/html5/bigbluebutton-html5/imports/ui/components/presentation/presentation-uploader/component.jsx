@@ -1236,6 +1236,9 @@ class PresentationUploader extends Component {
                 {isMobile ? this.renderPicDropzone() : null}
                 {this.renderDropzone()}
                 {this.renderExternalUpload()}
+                <Styled.BackHint>
+                  Click "Cancel" or "Confirm" to go back to the Class.
+                </Styled.BackHint>
               </Styled.ModalInner>
             </Styled.UploaderModal>
           )
