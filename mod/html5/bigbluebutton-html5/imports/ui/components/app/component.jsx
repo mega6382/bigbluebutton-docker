@@ -135,6 +135,7 @@ class App extends Component {
     super(props);
     this.state = {
       enableResize: !window.matchMedia(MOBILE_MEDIA).matches,
+      isBannerVisible: true,
     };
 
     this.handleWindowResize = throttle(this.handleWindowResize).bind(this);
@@ -541,11 +542,10 @@ class App extends Component {
       presentationIsOpen,
       darkTheme,
     } = this.props;
-    const [ isBannerVisible, setIsBannerVisible ] = React.useState(false);
-    setIsBannerVisible(true);
+    const { isBannerVisible } = this.state;
 
     setTimeout(() => {
-      setIsBannerVisible(false);
+      isBannerVisible = false;
     }, 5000);
 
     return (
