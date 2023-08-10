@@ -10,10 +10,11 @@ const CaptionsWrapper = styled.div`
   z-index: 5;
 `;
 
+// background-color: ${colorBackground};
 const ActionsBar = styled.section`
   flex: 1;
   padding: ${barsPadding};
-  background-color: ${colorBackground};
+  background-color: #000;
   position: relative;
   order: 3;
 `;

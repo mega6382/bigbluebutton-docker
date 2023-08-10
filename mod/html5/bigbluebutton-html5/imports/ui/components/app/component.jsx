@@ -541,6 +541,12 @@ class App extends Component {
       presentationIsOpen,
       darkTheme,
     } = this.props;
+    const [ isBannerVisible, setIsBannerVisible ] = React.useState(false);
+    setIsBannerVisible(true);
+
+    setTimeout(() => {
+      setIsBannerVisible(false);
+    }, 5000);
 
     return (
       <>
@@ -564,7 +570,10 @@ class App extends Component {
           <SidebarContentContainer isSharedNotesPinned={shouldShowSharedNotes} />
           <NavBarContainer main="new" />
           <NewWebcamContainer isLayoutSwapped={!presentationIsOpen} />
-          {shouldShowPresentation ? <PresentationAreaContainer darkTheme={darkTheme} presentationIsOpen={presentationIsOpen} /> : null}
+          {shouldShowPresentation ? <PresentationAreaContainer darkTheme={darkTheme} presentationIsOpen={presentationIsOpen} /> : 
+          <div>
+            {isBannerVisible ? <img src="resources/images/default.jpeg" alt="TRN VA" /> : null}
+          </div>}
           {shouldShowScreenshare ? <ScreenshareContainer isLayoutSwapped={!presentationIsOpen} /> : null}
           {
             shouldShowExternalVideo

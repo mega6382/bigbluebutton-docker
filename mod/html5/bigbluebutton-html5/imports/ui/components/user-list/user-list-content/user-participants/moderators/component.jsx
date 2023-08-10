@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { defineMessages } from 'react-intl';
 import PropTypes from 'prop-types';
-import Styled from './styles';
+import Styled from '../styles';
 import { findDOMNode } from 'react-dom';
 import {
   AutoSizer,
   CellMeasurer,
   CellMeasurerCache,
 } from 'react-virtualized';
-import UserListItemContainer from './user-list-item/container';
-import UserOptionsContainer from './user-options/container';
+import UserListItemContainer from '../user-list-item/container';
+import UserOptionsContainer from '../user-options/container';
 import Settings from '/imports/ui/services/settings';
 import { injectIntl } from 'react-intl';
 
@@ -41,7 +41,7 @@ const intlMessages = defineMessages({
 const ROLE_MODERATOR = Meteor.settings.public.user.role_moderator;
 const SKELETON_COUNT = 0;
 
-class UserParticipants extends Component {
+class Moderators extends Component {
   constructor() {
     super();
 
@@ -67,7 +67,7 @@ class UserParticipants extends Component {
   }
 
   componentDidMount() {
-    document.getElementById('user-list-virtualized-scroll')?.getElementsByTagName('div')[0]?.firstElementChild?.setAttribute('aria-label', 'Users list');
+    document.getElementById('moderators-list-virtualized-scroll')?.getElementsByTagName('div')[0]?.firstElementChild?.setAttribute('aria-label', 'Moderators list');
 
     const { compact } = this.props;
     if (!compact) {
@@ -114,23 +114,23 @@ class UserParticipants extends Component {
   getScrollContainerRef() {
     return this.refScrollContainer;
   }
-
-  getNonPresenters(users) {
-    const nonPresenters = [];
+  getModerators(users) {
+    const moderators = [];
     for (const user of users) {
-      if(!user.presenter && user?.role != ROLE_MODERATOR) {
-        nonPresenters.push(user);
+      if(user?.role === ROLE_MODERATOR && !user.presenter) {
+        moderators.push(user);
       }
     }
-    return nonPresenters;
+    return moderators;
   }
 
-  rowRenderer (nonPresenters) {
+
+  rowRenderer (moderators) {
     return ({
-      index,
-      parent,
-      style,
-      key,
+    index,
+    parent,
+    style,
+    key,
     }) => {
       const {
         compact,
@@ -143,9 +143,9 @@ class UserParticipants extends Component {
         isThisMeetingLocked,
       } = this.props;
       const { scrollArea } = this.state;
-      const user = nonPresenters[index];
+      const user = moderators[index];
       const isRTL = Settings.application.isRTL;
-      const isForPresenterList = false;
+      const isFormoderatorsList = true;
 
       return (
         <CellMeasurer
@@ -158,7 +158,7 @@ class UserParticipants extends Component {
           <span
             style={style}
             key={key}
-            id={`user-${user?.userId || ''}`}
+            id={`moderator-${user?.userId || ''}`}
           >
             <UserListItemContainer
               {...{
@@ -171,7 +171,7 @@ class UserParticipants extends Component {
                 isRTL,
                 lockSettingsProps,
                 isThisMeetingLocked,
-                isForPresenterList,
+                isFormoderatorsList,
               }}
               user={user}
               getScrollContainerRef={this.getScrollContainerRef}
@@ -185,7 +185,7 @@ class UserParticipants extends Component {
   handleClickSelectedUser(event) {
     let selectedUser = null;
     if (event.path) {
-      selectedUser = event.path.find(p => p.id && p.id.includes('user-'));
+      selectedUser = event.path.find(p => p.id && p.id.includes('moderator-'));
     }
     this.setState({ selectedUser });
   }
@@ -213,43 +213,31 @@ class UserParticipants extends Component {
       isMeetingMuteOnStart,
     } = this.props;
     const { isOpen, scrollArea } = this.state;
-    const nonPresenters = this.getNonPresenters(users);
+    const moderators = this.getModerators(users);
+
     return (
-      <Styled.UserListColumn data-test="userList">
+      <Styled.UserListColumn data-test="moderatorsList">
         {
           !compact
             ? (
               <Styled.Container>
                 <Styled.SmallTitle>
-                  {intl.formatMessage(intlMessages.usersTitle)}
-                  {nonPresenters.length > 0 ? ` (${nonPresenters.length})` : null}
+                  Moderators {moderators.length > 0 ? ` (${moderators.length})` : null}
                 </Styled.SmallTitle>
-                {/* {currentUser?.role === ROLE_MODERATOR
-                  ? (
-                    <UserOptionsContainer {...{
-                      users,
-                      clearAllEmojiStatus,
-                      meetingIsBreakout,
-                      isMeetingMuteOnStart,
-                    }}
-                    />
-                  ) : null
-                } */}
-
               </Styled.Container>
             )
             : <Styled.Separator />
         }
         <Styled.VirtualizedScrollableList
-          id={'user-list-virtualized-scroll'}
-          aria-label="Users list"
+          id={'moderators-list-virtualized-scroll'}
+          aria-label="Moderators list"
           role="region"
           tabIndex={0}
           ref={(ref) => {
             this.refScrollContainer = ref;
           }}
         >
-          <span id="participants-destination" />
+          <span id="moderators-destination" />
           <AutoSizer>
             {({ height, width }) => (
               <Styled.VirtualizedList
@@ -267,8 +255,8 @@ class UserParticipants extends Component {
                   }
                 }}
                 rowHeight={this.cache.rowHeight}
-                rowRenderer={this.rowRenderer(nonPresenters)}
-                rowCount={nonPresenters.length || SKELETON_COUNT}
+                rowRenderer={this.rowRenderer(moderators)}
+                rowCount={moderators.length || SKELETON_COUNT}
                 height={height - 1}
                 width={width - 1}
                 overscanRowCount={30}
@@ -283,7 +271,7 @@ class UserParticipants extends Component {
   }
 }
 
-UserParticipants.propTypes = propTypes;
-UserParticipants.defaultProps = defaultProps;
+Moderators.propTypes = propTypes;
+Moderators.defaultProps = defaultProps;
 
-export default injectIntl(UserParticipants);
+export default injectIntl(Moderators);

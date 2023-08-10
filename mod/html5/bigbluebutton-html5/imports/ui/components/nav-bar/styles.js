@@ -11,13 +11,14 @@ import { fontSizeBase } from '/imports/ui/stylesheets/styled-components/typograp
 import { phoneLandscape, smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import Button from '/imports/ui/components/common/button/component';
 
+// background-color: ${colorBackground};
 const Navbar = styled.header`
   position: absolute;
   display: flex;
   flex-direction: column;
   text-align: center;
   font-size: 1.5rem;
-  background-color: ${colorBackground};
+  background-color: #2957A1;
   padding: ${barsPadding} ${barsPadding} 0 ${barsPadding};
 `;
 

@@ -222,7 +222,7 @@ class Presenters extends Component {
             ? (
               <Styled.Container>
                 <Styled.SmallTitle>
-                  Presenter
+                  Instructor
                 </Styled.SmallTitle>
               </Styled.Container>
             )
@@ -237,7 +237,7 @@ class Presenters extends Component {
             this.refScrollContainer = ref;
           }}
         >
-          <span id="participants-destination" />
+          <span id="presenter-destination" />
           <AutoSizer>
             {({ height, width }) => (
               <Styled.VirtualizedList

@@ -119,7 +119,7 @@ const Chat = (props) => {
           />
         )}
       />
-      <TimeWindowList
+      {/* <TimeWindowList
         id={ELEMENT_ID}
         chatId={chatID}
         handleScrollUpdate={actions.handleScrollUpdate}
@@ -139,7 +139,7 @@ const Chat = (props) => {
           userSentMessage,
           width,
         }}
-      />
+      /> */}
       <MessageFormContainer
         {...{
           title,

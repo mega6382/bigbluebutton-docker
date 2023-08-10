@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Styled from './styles';
 import UserActionsContainer from './user-actions/container';
 import PresentersContainer from './user-participants/presenters/container';
+import ModeratorsContainer from './user-participants/moderators/container';
 import UserParticipantsContainer from './user-participants/container';
 import UserMessagesContainer from './user-messages/container';
 import UserNotesContainer from './user-notes/container';
@@ -45,6 +46,7 @@ class UserContent extends PureComponent {
         {/* <UserPollsContainer isPresenter={currentUser.presenter} /> */}
         {/* <BreakoutRoomContainer /> */}
         <PresentersContainer compact={compact}/>
+        <ModeratorsContainer compact={compact}/>
         <UserParticipantsContainer compact={compact}/>
       </Styled.Content>
     );
