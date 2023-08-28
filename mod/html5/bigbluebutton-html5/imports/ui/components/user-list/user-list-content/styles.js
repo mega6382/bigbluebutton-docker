@@ -27,7 +27,6 @@ import { ScrollboxVertical } from '/imports/ui/stylesheets/styled-components/scr
 const Content = styled(FlexColumn)`
   flex-grow: 1;
   overflow: hidden;
-  background: ##EFCD86;
 `;
 
 const Container = styled.div`

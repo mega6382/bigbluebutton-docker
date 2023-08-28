@@ -10,9 +10,10 @@ import {
 } from '/imports/ui/stylesheets/styled-components/palette';
 import { smPaddingX, borderSize } from '/imports/ui/stylesheets/styled-components/general';
 
+// background-color: ${userListBg};
 const UserList = styled(FlexColumn)`
   justify-content: flex-start;
-  background-color: ${userListBg};
+  background: ##EFCD86;
   color: ${userListText};
   height: 100%;
 `;
